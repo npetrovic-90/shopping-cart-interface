@@ -3,7 +3,7 @@
     <div v-if="sliderStatus">
       <div class="justify-content-center" :class="sliderState">
 
-        <label v-bind:class="labelArray" for="formMax">max</label>
+        <label class="font-weight-bold me-2" for="formMax">max</label>
         <input type="text" class="form-control mx-2" style="width:100px;"
         v-model="maxAmount" @change="$emit('update:maximum',maxAmount)"  id="formMax">
         <input type="range" class="custom-range" min="0" max="200"
@@ -38,5 +38,11 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: all 1s ease-in-out;
+}
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
 }
 </style>
