@@ -5,8 +5,8 @@
     v-bind:cart="cart"
     v-bind:cartQty="cartQty"
     v-bind:cartTotal="cartTotal" @toggle="toggleSliderStatus" @delete="removeItem"></navbar>
-    <price-slider :sliderStatus="sliderStatus" v-model:model="maximum"></price-slider>
-    <product-list :maximum="maximum" :products="products" @add="addItem"> </product-list>
+    <price-slider :sliderStatus="sliderStatus" v-model:maximum="maximum"></price-slider>
+    <product-list v-model="maximum" :products="products" @add="addItem"> </product-list>
   </div>
 </template>
 
@@ -50,8 +50,8 @@ export default {
       this.sliderStatus = !this.sliderStatus
     },
     removeItem: function (id) {
-      if (this.cart[id].Qty > 1) {
-        this.cart[id].Qty--
+      if (this.cart[id].qty > 1) {
+        this.cart[id].qty--
       } else {
         this.cart.splice(id, 1)
       }
@@ -59,10 +59,12 @@ export default {
     addItem: function (product) {
       var whichProduct
       var existing = this.cart.filter(function (item, index) {
-        if (item.product.id === Number(product.id)) {
+        if (item.product.id === product.id) {
           whichProduct = index
+          console.log('it is true that numbers are equal')
           return true
         } else {
+          console.log('it is false that numbers are equal')
           return false
         }
       })
@@ -82,7 +84,7 @@ export default {
   },
   mounted: function () {
     fetch('https://hplussport.com/api/products/order/price')
-      .then((response) => response.json())
+      .then(response => response.json())
       .then((data) => {
         this.products = data
       })

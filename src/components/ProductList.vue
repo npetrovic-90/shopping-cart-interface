@@ -5,12 +5,13 @@
     @beforeEnter="beforeEnter"
     @enter="enter"
     @leave="leave"
+  ><div class="row d-none mb-3 align-items-center"
+  v-for="(item, index) in products"
+
+  :key="item.id"
+  v-bind:data-index="index"
   >
-    <div
-      class="row d-none mb-3 align-items-center"
-      v-for="(item, index) in products"
-      :key="item.id" v-bind:data-index="index"
-    >
+
       <div class="col-1 m-auto">
         <button class="btn btn-info" v-on:click="$emit('add', item)">+</button>
       </div>
@@ -31,8 +32,10 @@
           <price :value="Number(item.price)"></price>
         </div>
       </div>
-    </div>
-  </transition-group>
+
+  </div>
+
+    </transition-group>
 </template>
 
 <script>
