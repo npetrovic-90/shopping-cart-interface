@@ -21,6 +21,7 @@
               <a href="#" v-on:click.stop="$parent.$emit('delete',index)" class="badge bg-danger text-light">-</a>
             </div>
           </div>
+          <router-link class="btn btn-sm float-end btn-outline-info text-dark me-2" to="/checkout">Checkout</router-link>
         </div>
       </div>
     </div>

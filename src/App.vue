@@ -1,26 +1,25 @@
 <template>
   <div id="app" class="container mt-5">
-    <products
-      v-bind:cart="cart"
-      v-bind:cartQty="cartQty"
-      v-bind:cartTotal="cartTotal"
-      v-bind:sliderStatus="sliderStatus"
-      v-bind:products="products"
-      v-model:maximum="maximum"
-
-      @add="addItem"
-      @toggle="toggleSliderStatus"
-      @delete="removeItem"
-    >
-
-    </products>
+    <router-view
+    v-bind:cartTotal="cartTotal"
+    v-bind:cart="cart"
+    v-bind:cartQty="cartQty"
+    @add="addItem"
+    @delete="removeItem"
+    v-bind:sliderStatus="sliderStatus"
+    v-bind:products="products"
+    v-model:maximum="maximum"
+    @toggle="toggleSliderStatus">
+    </router-view>
   </div>
 </template>
 
 <script>
+
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import Products from './components/Products.vue'
+// import Products from './components/Products.vue'
+// import Checkout from './components/Checkout.vue'
 
 export default {
   name: 'app',
@@ -81,10 +80,7 @@ export default {
       }
     }
   },
-  components: {
-    // FontAwesomeIcon,
-    Products
-  },
+
   mounted: function () {
     fetch('https://hplussport.com/api/products/order/price')
       .then(response => response.json())

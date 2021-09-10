@@ -1,12 +1,13 @@
 <template>
     <div>
     <h1>My Shop</h1>
+
     <navbar
     v-bind:cart="cart"
     v-bind:cartQty="cartQty"
-    v-bind:cartTotal="cartTotal" @toggle="toggleSliderStatus" @delete="removeItem"></navbar>
+    v-bind:cartTotal="cartTotal" ></navbar>
     <price-slider :sliderStatus="sliderStatus" v-model:maximum="maximums" ></price-slider>
-    <product-list v-model="maximums" :products="products" @add="addItem" > </product-list>
+    <product-list v-model="maximums" :products="products"> </product-list>
     </div>
 </template>
 <script>

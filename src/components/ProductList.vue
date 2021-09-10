@@ -5,7 +5,7 @@
     @beforeEnter="beforeEnter"
     @enter="enter"
     @leave="leave"
-  ><div class="row d-none mb-3 align-items-center"
+  ><div class="row d-flex mb-3 align-items-center"
   v-for="(item, index) in products"
 
   :key="item.id"
