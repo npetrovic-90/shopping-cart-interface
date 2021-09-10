@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-light fixed-top">
     <div class="navbar-text ms-auto d-flex">
-      <button class="btn btn-sm btn-outline-success" @click="$emit('toggle')">
+      <button class="btn btn-sm btn-outline-success" @click="$parent.$emit('toggle')">
       <font-awesome-icon icon="dollar-sign"></font-awesome-icon>
       </button>
       <div class="dropdown ms-2" v-if="cart.length>0">
@@ -18,7 +18,7 @@
               <span class="badge bg-warning text-dark ms-1">{{item.qty}}</span>
               {{item.product.name}}
               <b>{{item.qty*item.product.price }}$</b>
-              <a href="#" v-on:click.stop="$emit('delete',index)" class="badge bg-danger text-light">-</a>
+              <a href="#" v-on:click.stop="$parent.$emit('delete',index)" class="badge bg-danger text-light">-</a>
             </div>
           </div>
         </div>

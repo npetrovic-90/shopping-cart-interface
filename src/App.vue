@@ -1,21 +1,26 @@
 <template>
   <div id="app" class="container mt-5">
-    <h1>My Shop</h1>
-    <navbar
-    v-bind:cart="cart"
-    v-bind:cartQty="cartQty"
-    v-bind:cartTotal="cartTotal" @toggle="toggleSliderStatus" @delete="removeItem"></navbar>
-    <price-slider :sliderStatus="sliderStatus" v-model:maximum="maximum"></price-slider>
-    <product-list v-model="maximum" :products="products" @add="addItem"> </product-list>
+    <products
+      v-bind:cart="cart"
+      v-bind:cartQty="cartQty"
+      v-bind:cartTotal="cartTotal"
+      v-bind:sliderStatus="sliderStatus"
+      v-bind:products="products"
+      v-model:maximum="maximum"
+
+      @add="addItem"
+      @toggle="toggleSliderStatus"
+      @delete="removeItem"
+    >
+
+    </products>
   </div>
 </template>
 
 <script>
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import ProductList from './components/ProductList.vue'
-import PriceSlider from './components/PriceSlider.vue'
-import Navbar from './components/Navbar.vue'
+import Products from './components/Products.vue'
 
 export default {
   name: 'app',
@@ -78,9 +83,7 @@ export default {
   },
   components: {
     // FontAwesomeIcon,
-    ProductList,
-    PriceSlider,
-    Navbar
+    Products
   },
   mounted: function () {
     fetch('https://hplussport.com/api/products/order/price')

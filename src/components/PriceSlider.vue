@@ -5,10 +5,10 @@
 
         <label class="font-weight-bold me-2" for="formMax">max</label>
         <input type="text" class="form-control mx-2" style="width:100px;"
-        v-model="maxAmount" v-on:change="$emit('update:maximum',maxAmount)"  id="formMax">
+        v-model="maxAmount" v-on:change="$parent.$emit('update:maximum',maxAmount)"  id="formMax">
 
         <input type="range" class="custom-range" min="0" max="200"
-        v-model="maxAmount" v-on:input="$emit('update:maximum',maxAmount)">
+        v-model="maxAmount" v-on:input="$parent.$emit('update:maximum',maxAmount)">
       </div>
     </div>
 </transition>
